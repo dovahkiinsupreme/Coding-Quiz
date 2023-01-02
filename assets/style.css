@@ -5,7 +5,7 @@ font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 
 :root {
     --hue-neutral: 200;
-    --hue-wrong: 0;
+    --hue-incorrect: 0;
     --hue-correct: 145;
 }
 
@@ -25,12 +25,21 @@ body.correct {
     --hue:var(--hue-correct);
 }
 
-body.wrong {
-    --hue: var(--hue-wrong);
+body.incorrect {
+    --hue: var(--hue-incorrect);
 }
 
+#timer {
+display:flex;
+color:white;
+font-weight: bold;
+padding: 50px;
+
+}
+
+
 .container {
-    width: 800px;
+    width: 500px;
     max-width: 80%;
     background-color:antiquewhite;
     border-radius: 5px;
@@ -64,8 +73,8 @@ border-color: black;
     color:black;
 }
 
-.btn.wrong {
-    --hue:var(--hue-wrong);
+.btn.incorrect {
+    --hue:var(--hue-incorrect);
 }
 
 .start-btn, .next-btn {
