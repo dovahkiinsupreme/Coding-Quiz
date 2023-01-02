@@ -7,38 +7,37 @@ const questionElement = document.getElementById("question")
 const answerButtonsElement = document.getElementById("answer-buttons")
 var timer = document.getElementById("timer");
 var timerInterval
-var timeLeft = 10
+var timeLeft = 60
 
 let shuffledQuestions, currentQuestionIndex
 
 //event listeners for function init on click
-startButton.addEventListener("click", startGame) 
+startButton.addEventListener("click", startGame)
 nextButton.addEventListener("click", () => {
     currentQuestionIndex++
     setNextQuestion()
 })
 
 
-//starts game on "start button" click, adds hide class to the start button once game has started
+//starts game and game timer on "start button" click, adds hide class to the start button once game has started
 function startGame() {
-    startButton.classList.add("hide")
+    startButton.classList.add("hide") 
+    && (timerInterval) 
+        setInterval(function(){
+        timeLeft--
+        timer.textContent = "Time Remaining: " + timeLeft
+        if (timeLeft <= 0) {
+            clearInterval(timeLeft)
+        }
+    },1000)
     
 //randomizes questions so they're not always in the same order
     shuffledQuestions = questions.sort(() => Math.random() - .5)
     currentQuestionIndex = 0
 //removes hide class from questions container to allow it to be displayed after start is clicked
     questionContainerElement.classList.remove("hide")
-    setNextQuestion()
+    setNextQuestion();
 }
-
-//game timer
-timerInterval = setInterval(function(){
-    timeLeft--
-    timer.textContent = "Time Remaining: " + timeLeft
-    if (timeLeft <= 0) {
-        clearInterval(timerInterval)
-    }
-},1000)
 
 
 //after "next" button is clicked, queues up the next question in random order by calling the shuffle questions function
@@ -71,18 +70,18 @@ function resetState() {
     clearStatusClass(document.body)
     nextButton.classList.add("hide")
     while(answerButtonsElement.firstChild) {
-        answerButtonsElement.removeChild 
+        answerButtonsElement.removeChild
         (answerButtonsElement.firstChild)
     }
 }
 //checks answer selection using boolean true/false from questions array
 function selectAnswer(b) {
-    const selectedButton = b.target
+    const selectedButton = b.target;
     const correct = selectedButton.dataset.correct
     setStatusClass(document.body, correct)
     Array.from(answerButtonsElement.children).forEach(button => {
         setStatusClass(button, button.dataset.correct)
-    })
+    });
 //checks question index. if no questions remain, restart button appears
     if (shuffledQuestions.length > currentQuestionIndex + 1) {
         nextButton.classList.remove("hide")
@@ -95,9 +94,9 @@ function selectAnswer(b) {
 function setStatusClass(element, correct) {
     clearStatusClass(element)
     if (correct){
-        element.classList.add("correct"), alert("Correct!")
+        element.classList.add("correct")
         } else {
-        element.classList.add("incorrect", alert("Incorrect!"))
+        element.classList.add("incorrect")
     }
 }
 
@@ -108,26 +107,58 @@ function clearStatusClass(element) {
 //Quiz questions array
 const questions = [
     {
-    question: "What is 2 + 2?",
+    question: "How do you create a function?",
     answers: [
-        {text: "4", correct: true},
-        {text: "22", correct: false},
-        {text: "null", correct: false},
-        {text: "null", correct: false}
+        {text: "function:myFunction()", correct: false},
+        {text: "function=myFunction()", correct: false},
+        {text: "function myFunction()", correct: true},
+        {text: "myFunction():Function", correct: false}
     ]
 }, 
     {
-    question: "What is the square root of 4?",
+    question: "How do you call a function named myFunction?",
     answers: [
-        {text: "4", correct: false},
-        {text: "2", correct: true},
-        {text: "8", correct: false},
-        {text: "t", correct: false}
+        {text: "call myFunction()", correct: false},
+        {text: "myFunction()", correct: true},
+        {text: "call function myFunction", correct: false},
+        {text: "call.myFunction()", correct: false}
     ]
-    }
+},
+    {
+    question: "Inside which HTML element to we put the JavaScript?",
+    answers: [
+        {text: "<script>", correct: true},
+        {text: "<js>", correct: false},
+        {text: "<src>", correct: false},
+        {text: "<javascript>", correct: false}
+    ]
+},
+{
+    question: "How do you write an IF statement for executing some code if 'i' is NOT equal to 5?",
+    answers: [
+        {text: "if i <> 5", correct: false},
+        {text: "if (i <> 5)", correct: false},
+        {text: "if i =! 5 then", correct: false},
+        {text: "if (i != 5)", correct: true}
+    ]
+},
+{
+    question: "What is the correct way to write a JavaScript array?",
+    answers: [
+        {text: "var colors = 1 = ('red'), 2 = ('green'), 3 = ('blue')", correct: false},
+        {text: "var colors = (1:'red', 2:'green', 3:'blue')", correct: false},
+        {text: "var colors = ['red', 'green', 'blue'] ", correct: true},
+        {text: "var colors = 'red', 'green', 'blue'", correct: false}
+    ]
+},
 
-
-
-
-
+{
+    question: "Which operator is used to assign a value to a variable?",
+    answers: [
+        {text: "=", correct: true},
+        {text: "x", correct: false},
+        {text: "*", correct: false},
+        {text: "--", correct: false}
+    ]
+}
 ]

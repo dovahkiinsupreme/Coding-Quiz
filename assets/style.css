@@ -3,11 +3,20 @@ box-sizing:border-box;
 font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
+
 :root {
-    --hue-neutral: 200;
-    --hue-incorrect: 0;
-    --hue-correct: 145;
+    --hue-neutral: 1000;
+    --hue-incorrect: 20;
+    --hue-correct: 120;
 }
+
+#timer {
+    justify-content: top;
+    align-items: center;
+    color:white;
+    font-weight: bold;
+    padding: 50px;
+    }
 
 body {
     --hue: var(--hue-neutral);
@@ -29,12 +38,12 @@ body.incorrect {
     --hue: var(--hue-incorrect);
 }
 
-#timer {
+/*#timer {
 display:flex;
 color:white;
 font-weight: bold;
 padding: 50px;
-}
+}*/
 
 
 .container {
