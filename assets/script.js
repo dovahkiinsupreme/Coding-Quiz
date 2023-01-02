@@ -5,6 +5,9 @@ const nextButton = document.getElementById("next-btn")
 const questionContainerElement = document.getElementById("question-container")
 const questionElement = document.getElementById("question")
 const answerButtonsElement = document.getElementById("answer-buttons")
+var timer = document.getElementById("timer");
+var timerInterval
+var timeLeft = 10
 
 let shuffledQuestions, currentQuestionIndex
 
@@ -15,9 +18,11 @@ nextButton.addEventListener("click", () => {
     setNextQuestion()
 })
 
+
 //starts game on "start button" click, adds hide class to the start button once game has started
 function startGame() {
     startButton.classList.add("hide")
+    
 //randomizes questions so they're not always in the same order
     shuffledQuestions = questions.sort(() => Math.random() - .5)
     currentQuestionIndex = 0
@@ -25,11 +30,23 @@ function startGame() {
     questionContainerElement.classList.remove("hide")
     setNextQuestion()
 }
+
+//game timer
+timerInterval = setInterval(function(){
+    timeLeft--
+    timer.textContent = "Time Remaining: " + timeLeft
+    if (timeLeft <= 0) {
+        clearInterval(timerInterval)
+    }
+},1000)
+
+
 //after "next" button is clicked, queues up the next question in random order by calling the shuffle questions function
 function setNextQuestion() {
     resetState()
     showQuestion(shuffledQuestions[currentQuestionIndex])
 }
+
 //displays question text from questions array inside button text
 function showQuestion(question) {
     questionElement.innerText = question.question
@@ -37,15 +54,18 @@ function showQuestion(question) {
         const button = document.createElement("button")
         button.innerText = answer.text
         button.classList.add("btn")
+
 //checks question boolean true/false from questions array
         if (answer.correct) {
             button.dataset.correct = answer.correct
         }
+
 //event listener for a click on each respective answer
         button.addEventListener("click", selectAnswer)
         answerButtonsElement.appendChild(button)
     })
 }
+
 //resets background color change from correct/incorrect when next button is pressed
 function resetState() {
     clearStatusClass(document.body)
@@ -75,11 +95,9 @@ function selectAnswer(b) {
 function setStatusClass(element, correct) {
     clearStatusClass(element)
     if (correct){
-        element.classList.add("correct")
-        alert("Correct!");
-    } else {
-        element.classList.add("incorrect")
-        alert("Incorrect!");
+        element.classList.add("correct"), alert("Correct!")
+        } else {
+        element.classList.add("incorrect", alert("Incorrect!"))
     }
 }
 
@@ -87,7 +105,7 @@ function clearStatusClass(element) {
     element.classList.remove("correct")
     element.classList.remove("incorrect")
 }
-
+//Quiz questions array
 const questions = [
     {
     question: "What is 2 + 2?",
