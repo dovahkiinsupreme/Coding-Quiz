@@ -5,9 +5,10 @@ const nextButton = document.getElementById("next-btn")
 const questionContainerElement = document.getElementById("question-container")
 const questionElement = document.getElementById("question")
 const answerButtonsElement = document.getElementById("answer-buttons")
+const highScore = document.getElementById("endGame")
 var timer = document.getElementById("timer");
 var timerInterval
-var timeLeft = 60
+var timeLeft = 10
 
 let shuffledQuestions, currentQuestionIndex
 
@@ -26,11 +27,12 @@ function startGame() {
         setInterval(function(){
         timeLeft--
         timer.textContent = "Time Remaining: " + timeLeft
-        if (timeLeft <= 0) {
+        if (timeLeft === 0) {
             clearInterval(timeLeft)
         }
     },1000)
     
+
 //randomizes questions so they're not always in the same order
     shuffledQuestions = questions.sort(() => Math.random() - .5)
     currentQuestionIndex = 0
@@ -88,8 +90,11 @@ function selectAnswer(b) {
     } else {
         startButton.innerText = "Restart"
         startButton.classList.remove("hide")
+        highScore.classList.remove("hide")
+        questionElement.classList.remove("show")
     }
 }
+
 //if selection is correct, background and button change to green, if incorrect, background and button change to red
 function setStatusClass(element, correct) {
     clearStatusClass(element)
@@ -104,6 +109,12 @@ function clearStatusClass(element) {
     element.classList.remove("correct")
     element.classList.remove("incorrect")
 }
+
+function restart() {
+    if (startButton.innerText === "Restart") 
+    addEventListener("click", highScore.classList.remove("show"))
+}
+
 //Quiz questions array
 const questions = [
     {
