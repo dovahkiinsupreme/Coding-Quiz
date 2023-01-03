@@ -23,12 +23,13 @@ nextButton.addEventListener("click", () => {
 //starts game and game timer on "start button" click, adds hide class to the start button once game has started
 function startGame() {
     startButton.classList.add("hide") 
-    && (timerInterval) 
-        setInterval(function(){
+    
+    timerInterval = setInterval(function() {
         timeLeft--
         timer.textContent = "Time Remaining: " + timeLeft
         if (timeLeft === 0) {
-            clearInterval(timeLeft)
+            clearInterval(timerInterval)
+            alert("Sorry, your time is up!")
         }
     },1000)
     
@@ -91,7 +92,7 @@ function selectAnswer(b) {
         startButton.innerText = "Restart"
         startButton.classList.remove("hide")
         highScore.classList.remove("hide")
-        questionElement.classList.remove("show")
+        questionContainerElement.classList.add("hide")
     }
 }
 
@@ -112,7 +113,7 @@ function clearStatusClass(element) {
 
 function restart() {
     if (startButton.innerText === "Restart") 
-    addEventListener("click", highScore.classList.remove("show"))
+    addEventListener("click", highScore.classList.add("hide"))
 }
 
 //Quiz questions array

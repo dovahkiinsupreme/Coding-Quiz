@@ -97,6 +97,10 @@ border-color: black;
 }
 
 #enterScore {
+    background-color: blueviolet;
+    padding:5px;
+    border-radius: 5px;
+    color:white;
     font-size: 1.5rem;
     font-weight: bold;
     margin-top: 50px;
