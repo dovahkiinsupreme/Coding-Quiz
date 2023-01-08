@@ -20,13 +20,23 @@
             </div>
         </div>
         <div class="controls">
-            <button id="start-btn" class = "start-btn btn">Start</button>
+            <button id="start-btn" class = "start-btn btn" class = "hide">Start</button>
             <button id="next-btn" class="next-btn btn hide">Next</button>
         </div>
+        <div id=highScoreContainer class = "hide">
+            <div id="high-scorePage">
+                <div id="highscore-header">
+                    <h3>User Initials:</h3>
+                    <h3>Score:</h3>
+                </div>
+                <div id = "highscore-initials"></div>
+                <div id = "highscore-score"></div>
+            </div>
         <div id="endGame" class="hide">
             <div id="finalScore"></div>
             <input type="text" size = "50" placeholder="Enter your initials" name="initials" id="init">
             <button id="enterScore">Enter Score!</button>
+            <button id="replay" class="btn">Replay</button>
         </div>
     </div>
 </body>

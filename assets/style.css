@@ -90,13 +90,14 @@ border-color: black;
 }
 #endGame    {
     align-content: center;
+    display:inline;
     padding-top: 50px;
     padding-left: 70px;
     font-family: sans-serif;
     font-weight: bold;
 }
 
-#enterScore {
+#enterScore, #replay {
     background-color: blueviolet;
     padding:5px;
     border-radius: 5px;
@@ -104,7 +105,7 @@ border-color: black;
     font-size: 1.5rem;
     font-weight: bold;
     margin-top: 50px;
-    margin-left: 95px;
+    margin-left: 80px;
     margin-bottom:20px;
 }
 
