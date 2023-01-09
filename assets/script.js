@@ -12,7 +12,7 @@ const replayButton = document.getElementById("replay")
 var timer = document.getElementById("timer")
 var highscoreInputName = document.getElementById("init")
 var timerInterval
-var timeLeft = 10
+var timeLeft = 30
 
 let shuffledQuestions, currentQuestionIndex
 
