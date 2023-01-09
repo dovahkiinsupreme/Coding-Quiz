@@ -7,6 +7,7 @@ const questionElement = document.getElementById("question")
 const answerButtonsElement = document.getElementById("answer-buttons")
 const highScore = document.getElementById("endGame")
 const highScoreContainer = document.getElementById("highScoreContainer")
+const replayButton = document.getElementById("replay")
 var timer = document.getElementById("timer")
 var highscoreInputName = document.getElementById("initials")
 var timerInterval
@@ -115,42 +116,10 @@ function clearStatusClass(element) {
 }
 
 function restart() {
-    this (startButton.innerText = ("Restart"))
-    startButton.addEventListener("click", startGame)
-    highScore.classList.add("hide")
-    timeLeft = 10;
-    
-}
-
-function showScore(){
-//    quizBody.style.display = "none"
-//    gameoverDiv.style.display = "flex";
-    clearInterval(timerInterval);
-    highscoreInputName.value = "";
-    finalScoreEl.innerHTML = "You got " + score + " out of " + quizQuestions.length + " correct!";
+    window.location.reload()
 }
 
 
-enterScore.addEventListener("click", function highscore(){
-
-    if(highscoreInputName.value === "") {
-        alert("Initials cannot be blank");
-        return false;
-    }else{
-        var savedHighscores = JSON.parse(localStorage.getItem("savedHighscores")) || [];
-        var currentUser = highscoreInputName.value.trim();
-        var currentHighscore = {
-            name : currentUser,
-            score : score
-        };
-
-        savedHighscores.push(currentHighscore);
-        localStorage.setItem("savedHighscores", JSON.stringify(savedHighscores));
-        generateHighscores();
-
-    }
-
-});
 
 
 //Quiz questions array
