@@ -8,8 +8,9 @@ const answerButtonsElement = document.getElementById("answer-buttons")
 const highScore = document.getElementById("endGame")
 const highScoreContainer = document.getElementById("highScoreContainer")
 const replayButton = document.getElementById("replay")
+
 var timer = document.getElementById("timer")
-var highscoreInputName = document.getElementById("initials")
+var highscoreInputName = document.getElementById("init")
 var timerInterval
 var timeLeft = 10
 
@@ -119,7 +120,31 @@ function restart() {
     window.location.reload()
 }
 
+var score = 0
 
+if (correct = true) score++
+
+
+enterScore.addEventListener("click", function highscore(){
+
+    if(highscoreInputName.value === "") {
+        alert("Initials cannot be blank");
+        return false;
+    }else{
+        var savedHighscores = JSON.parse(localStorage.getItem("savedHighscores")) || [];
+        var currentUser = highscoreInputName.value.trim();
+        var currentHighscore = {
+            name : currentUser,
+            score : score
+        };
+
+        savedHighscores.push(currentHighscore);
+        localStorage.setItem("savedHighscores", JSON.stringify(savedHighscores));
+        generateHighscores();
+
+    }
+
+});
 
 
 //Quiz questions array
