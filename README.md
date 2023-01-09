@@ -21,8 +21,8 @@ If the timer expires before quiz completion, an alert appears to let the user kn
 On the last page of the quiz, there is a button to restart the quiz.
 
 
-![PW Generator Screenshot 1](assets/images/Screenshot 1.png)
-![PW Generator Screenshot 2](assets/images/Screenshot 2.png)
+![Coding Quiz Screenshot 1](./assets/images/Screenshot 1.png)
+![Coding Quiz Screenshot 2](./assets/images/Screenshot 2.png)
 
 [Page Link](https://dovahkiinsupreme.github.io/Coding-Quiz/)
 
