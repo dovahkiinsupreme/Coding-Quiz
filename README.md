@@ -33,6 +33,7 @@ On the last page of the quiz, there is a button to restart the quiz.
 [Stack Overflow](https://stackoverflow.com/questions) 
 [Programiz](https://www.programiz.com/javascript/examples/generate-random-strings)
 [Web Dev Simplified](https://www.youtube.com/@WebDevSimplified)
+[Dev Github Page](https://github.com/JustinMarchi)
 
 
 ## Tests
